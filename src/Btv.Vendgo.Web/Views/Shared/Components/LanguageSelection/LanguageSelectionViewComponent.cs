@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Abp.Localization;
 using Microsoft.AspNetCore.Mvc;
+#pragma warning disable 1998
 
 namespace Btv.Vendgo.Web.Views.Shared.Components.LanguageSelection
 {

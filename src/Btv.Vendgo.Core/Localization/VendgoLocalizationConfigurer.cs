@@ -11,8 +11,8 @@ namespace Btv.Vendgo.Localization
     {
         public static void Configure(ILocalizationConfiguration localizationConfiguration)
         {
-            localizationConfiguration.Languages.Add(new LanguageInfo("en", "English", "famfamfam-flags england", isDefault: true));
-            localizationConfiguration.Languages.Add(new LanguageInfo("tr", "Türkçe", "famfamfam-flags tr"));
+            localizationConfiguration.Languages.Add(new LanguageInfo("vi", "Việt Nam", "famfamfam-flags vn", isDefault: true));
+            localizationConfiguration.Languages.Add(new LanguageInfo("en", "English", "famfamfam-flags england"));
 
             localizationConfiguration.Sources.Add(
                 new DictionaryBasedLocalizationSource(VendgoConsts.LocalizationSourceName,

@@ -1,11 +1,13 @@
 ﻿using Abp.Application.Navigation;
 using Abp.Localization;
+using JetBrains.Annotations;
 
 namespace Btv.Vendgo.Web.Startup
 {
     /// <summary>
     /// This class defines menus for the application.
     /// </summary>
+    [UsedImplicitly]
     public class VendgoNavigationProvider : NavigationProvider
     {
         public override void SetNavigation(INavigationProviderContext context)
@@ -25,6 +27,27 @@ namespace Btv.Vendgo.Web.Startup
                         url: "Home/About",
                         icon: "fa fa-info"
                         )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        PageNames.About,
+                        L("Product"),
+                        url: "",
+                        icon: "fa fa-info"
+                    )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        PageNames.About,
+                        L("Service"),
+                        url: "",
+                        icon: "fa fa-info"
+                    )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        PageNames.About,
+                        L("Blog"),
+                        url: "",
+                        icon: "fa fa-info"
+                    )
                 );
         }
 

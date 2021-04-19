@@ -7,6 +7,7 @@ using Btv.Vendgo.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.Configuration;
+#pragma warning disable 618
 
 namespace Btv.Vendgo.Web.Startup
 {

@@ -9,7 +9,7 @@ namespace Btv.Vendgo.Web.Views.Shared.Components.TopMenu
 
         public string ActiveMenuItemName { get; set; }
 
-        public string CalculateMenuUrl(string applicationPath, UserMenuItem menuItem)
+        public static string CalculateMenuUrl(string applicationPath, UserMenuItem menuItem)
         {
             if (string.IsNullOrEmpty(menuItem.Url))
             {

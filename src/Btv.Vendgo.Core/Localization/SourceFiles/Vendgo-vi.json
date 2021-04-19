@@ -1,0 +1,14 @@
+{
+  "culture": "vi",
+  "texts": {
+    "HelloWorld": "Xin chào các bạn!",
+    "ChangeLanguage": "Thay đổi ngôn ngữ",
+    "HomePage": "Trang chủ",
+    "About": "Giới thiệu",
+    "Product": "Sản phẩm",
+    "Service": "Dịch vụ",
+    "Blog": "Tin tức",
+    "Home_Description": "Chào mừng bạn ghé thăm Vendgo...",
+    "About_Description": "Đây là giao diện đơn giản để bắt đầu sử dụng ASP.NET Core with ABP framework."
+  }
+}

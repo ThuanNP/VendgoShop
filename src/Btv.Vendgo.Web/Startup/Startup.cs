@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Abp.AspNetCore;
 using Abp.Castle.Logging.Log4Net;
 using Abp.EntityFrameworkCore;
@@ -6,8 +7,10 @@ using Btv.Vendgo.EntityFrameworkCore;
 using Castle.Facilities.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -53,6 +56,7 @@ namespace Btv.Vendgo.Web.Startup
             }
 
             app.UseStaticFiles();
+            app.UseFileServer();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

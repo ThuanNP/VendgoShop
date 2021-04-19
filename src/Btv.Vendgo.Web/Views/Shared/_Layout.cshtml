@@ -17,24 +17,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="theme-color" content="#056EB9"/>
+    <meta name="msapplication-navbutton-color" content="#056EB9"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="#056EB9"/>
 
     <link rel="shortcut icon" href="~/favicon.ico">
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="~/img/favicon/favicon.ico">
+    <link rel="icon" href="~/img/favicon/favicon-32x32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="~/img/favicon/favicon-16x16.png" type="image/png" sizes="16x16">
+    <link rel="apple-touch-icon" href="~/img/favicon/apple-touch-icon.png" sizes="180x180">
+    <link rel="manifest" href="~/img/favicon/manifest.json">
 
+    <!-- Load google font
+    ================================================== -->
+    <script type="text/javascript">
+    			WebFontConfig = {
+    				google: { families: [ 'Assistant:200,300,400,600,700,800', 'Raleway:600&display=swap'] }
+    			};
+    			(function() {
+    				var wf = document.createElement('script');
+    				wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+    				wf.type = 'text/javascript';
+    				wf.async = 'true';
+    				var s = document.getElementsByTagName('script')[0];
+    				s.parentNode.insertBefore(wf, s);
+    			})();
+    		</script>
+    <!-- Load other scripts
+    ================================================== -->
+    <script type="text/javascript">
+			var _html = document.documentElement,
+				isTouch = (('ontouchstart' in _html) || (navigator.msMaxTouchPoints > 0) || (navigator.maxTouchPoints));
+
+			_html.className = _html.className.replace("no-js","js");
+			_html.classList.add( isTouch ? "touch" : "no-touch");
+		</script>
     <title>Vendgo</title>
 
     <!-- Global styles -->
 
     <environment names="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap-paper/bootstrap.css" />
-        <link rel="stylesheet" href="~/lib/toastr/toastr.css" />
-        <link rel="stylesheet" href="~/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css" />
-        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="~/lib/bootstrap-paper/bootstrap.css"/>
+        <link rel="stylesheet" href="~/lib/toastr/toastr.css"/>
+        <link rel="stylesheet" href="~/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css"/>
+        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css"/>
 
-        <link rel="stylesheet" href="~/css/main.css" />
+        <link rel="stylesheet" href="~/css/style.css"/>
+        <link rel="stylesheet" href="~/css/critical.css"/>
+        <link rel="stylesheet" href="~/css/main.css"/>
     </environment>
 
     <environment names="Staging,Production">
-        <link rel="stylesheet" href="~/view-resources/Views/_Bundles/layout-libs.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/view-resources/Views/_Bundles/template.min.css" asp-append-version="true"/>
+        <link rel="stylesheet" href="~/view-resources/Views/_Bundles/layout-libs.min.css" asp-append-version="true"/>
     </environment>
 
     <!-- View specific styles -->
@@ -56,91 +93,97 @@
 </head>
 <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="~/"><i class="fa fa-cubes"></i> Vendgo</a>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    @await Component.InvokeAsync(typeof(TopMenuViewComponent), new { activeMenu = ViewBag.ActiveMenu })
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    @await Component.InvokeAsync(typeof(LanguageSelectionViewComponent))
-                </ul>
-            </div>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="~/"><i class="fa fa-cubes"></i> Vendgo</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                @await Component.InvokeAsync(typeof(TopMenuViewComponent), new {activeMenu = ViewBag.ActiveMenu})
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                @await Component.InvokeAsync(typeof(LanguageSelectionViewComponent))
+            </ul>
         </div>
     </div>
+</div>
 
-    <div class="container body-content">
-        @if (AlertManager.Alerts.Any())
-        {
-            <div id="AbpPageAlerts">
-                @foreach (var alertMessage in AlertManager.Alerts)
-                {
-                    <div class="alert alert-@alertMessage.Type.ToString().ToLower() @(alertMessage.Dismissible ? "alert-dismisable" : "")" role="alert">
-                        <h4 class="alert-heading">
-                            @alertMessage.Title
-                            @if (alertMessage.Dismissible)
-                            {
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            }
-                        </h4>
+<div class="container body-content">
+    @if (AlertManager.Alerts.Any())
+    {
+        <div id="AbpPageAlerts">
+            @foreach (var alertMessage in AlertManager.Alerts)
+            {
+                <div class="alert alert-@alertMessage.Type.ToString().ToLower() @(alertMessage.Dismissible ? "alert-dismisable" : "")" role="alert">
+                    <h4 class="alert-heading">
+                        @alertMessage.Title
+                        @if (alertMessage.Dismissible)
+                        {
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        }
+                    </h4>
 
-                        <p>@alertMessage.Text</p>
-                    </div>
-                }
-            </div>
-        }
+                    <p>@alertMessage.Text</p>
+                </div>
+            }
+        </div>
+    }
 
-        @RenderBody()
-    </div>
+    @RenderBody()
+</div>
 
-    <!-- Global scripts -->
+<!-- Global scripts -->
 
-    <environment names="Development">
-        <script src="~/lib/json2/json2.js"></script>
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/lib/moment/min/moment-with-locales.js"></script>
-        <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-        <script src="~/lib/blockUI/jquery.blockUI.js"></script>
-        <script src="~/lib/toastr/toastr.js"></script>
-        <script src="~/lib/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="~/lib/spin.js/spin.js"></script>
-        <script src="~/lib/spin.js/jquery.spin.js"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js"></script>
-        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js"></script>
-    </environment>
+<environment names="Development">
+    <script src="~/lib/json2/json2.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/moment/min/moment-with-locales.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/blockUI/jquery.blockUI.js"></script>
+    <script src="~/lib/toastr/toastr.js"></script>
+    <script src="~/lib/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="~/lib/spin.js/spin.js"></script>
+    <script src="~/lib/spin.js/jquery.spin.js"></script>
+    
+    <script src="~/js/device.js"></script>
+    <script src="~/js/main.js"></script>
+    
+    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js"></script>
+    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js"></script>
+    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js"></script>
+    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js"></script>
+    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js"></script>
+    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js"></script>
+</environment>
 
-    <environment names="Staging,Production">
-        <script src="~/view-resources/Views/_Bundles/layout-libs.min.js" asp-append-version="true"></script>
-    </environment>
+<environment names="Staging,Production">
+    <script src="~/view-resources/Views/_Bundles/template.min.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Views/_Bundles/layout-libs.min.js" asp-append-version="true"></script>
+</environment>
 
-    <script>
+<script>
         abp.localization.defaultSourceName = '@LocalizationSourceName';
         if (moment) { //Localizing momentjs
             moment.locale('@CultureInfo.CurrentUICulture.Name');
         }
     </script>
 
-    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
-    <script src="~/AbpServiceProxies/GetAll?v=@(Clock.Now.Ticks)" type="text/javascript"></script>
-    <script src="~/AbpScripts/GetScripts?v=@(Clock.Now.Ticks)" type="text/javascript"></script>
+<!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+<script src="~/AbpServiceProxies/GetAll?v=@(Clock.Now.Ticks)" type="text/javascript"></script>
+<script src="~/AbpScripts/GetScripts?v=@(Clock.Now.Ticks)" type="text/javascript"></script>
+<!-- View specific scripts -->
 
-    <!-- View specific scripts -->
-
-    @RenderSection("scripts", required: false)
+@RenderSection("scripts", required: false)
 
 </body>
 </html>

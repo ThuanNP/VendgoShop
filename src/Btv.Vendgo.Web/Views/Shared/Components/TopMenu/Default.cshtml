@@ -10,7 +10,7 @@
     <li class="@(Model.ActiveMenuItemName == menuItem.Name ? "active" : "")">
         @if (menuItem.Items.IsNullOrEmpty())
         {
-            <a href="@Model.CalculateMenuUrl(ApplicationPath, menuItem)">
+            <a href="@TopMenuViewModel.CalculateMenuUrl(ApplicationPath, menuItem)">
                 @if (!string.IsNullOrWhiteSpace(menuItem.Icon))
                 {
                     <i class="@menuItem.Icon"></i>
@@ -31,7 +31,7 @@
                 @foreach (var subMenuItem in menuItem.Items)
                 {
                     <li>
-                        <a href="@Model.CalculateMenuUrl(ApplicationPath, subMenuItem)">
+                        <a href="@TopMenuViewModel.CalculateMenuUrl(ApplicationPath, subMenuItem)">
                             @if (!string.IsNullOrWhiteSpace(subMenuItem.Icon))
                             {
                                 <i class="@subMenuItem.Icon"></i>

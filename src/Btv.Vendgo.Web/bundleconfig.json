@@ -35,5 +35,19 @@
       "wwwroot/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js",
       "wwwroot/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/view-resources/Views/_Bundles/template.min.css",
+    "inputFiles": [
+      "wwwroot/css/critical.css",
+      "wwwroot/css/style.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/view-resources/Views/_Bundles/template.min.js",
+    "inputFiles": [
+      "wwwroot/js/device.js",
+      "wwwroot/js/main.js"
+    ]
   }
 ]

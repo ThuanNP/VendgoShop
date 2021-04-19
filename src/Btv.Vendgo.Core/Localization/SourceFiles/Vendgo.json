@@ -5,6 +5,9 @@
     "ChangeLanguage": "Change language",
     "HomePage": "HomePage",
     "About": "About",
+    "Product": "Product",
+    "Service": "Service",
+    "Blog": "Blog",
     "Home_Description": "Welcome to Vendgo...",
     "About_Description": "This is a simple startup template to use ASP.NET Core with ABP framework."
   }
